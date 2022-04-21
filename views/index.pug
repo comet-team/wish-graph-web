@@ -14,8 +14,15 @@ html(lang='ru')
         .header_right_edge
     .main
       .title_block
-        h1.title_block_text Введите ваш кошелёк:
+        h1.title_block_text Enter blockchain address:
       .input_block
         form.main_form(action='' method='post')
-          input#POST-name.main_form_field(type='text' name='name')
-          input.main_form_button(type='submit' value='Save')
+          input#POST-name.main_form_field(type='text' name='owner')
+          input.main_form_button(type='submit' value='Find NFT')
+      if need_print == true
+        .title_block
+          h1.title_block_text Recommended NFT:
+        .main_nft_block
+          each url in list_url
+            .nft
+              img(src=url height='295' width='295')

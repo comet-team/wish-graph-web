@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-bottom: 150px;
 }
 
 a {
@@ -59,7 +60,7 @@ header {
 }
 
 .input_block {
-  height: 300px;
+  height: 150px;
   display: flex;
   justify-content: center;
 }
@@ -96,4 +97,10 @@ header {
 
 .main_form_button:hover {
   background-color: white;
+}
+
+.main_nft_block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
