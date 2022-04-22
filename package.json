@@ -13,8 +13,7 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
-    "request": "^2.88.2",
-    "web3": "^1.7.3"
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
