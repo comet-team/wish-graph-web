@@ -9,31 +9,27 @@ router.get('/', function(req, res, next) {
 async function drawPage(req, res) {
   let owner = req.body.owner;
   var lst = [];
-  var id_arr = []
-  let promise_info = new Promise((resolve, reject) => {
-    request('https://api.rarible.org/v0.1/items/byOwner?owner=ETHEREUM%3A' + owner, (err, response, body) => {
+  var id_arr = [];
+  let api_req = new Promise((resolve, reject) => {
+    request('http://5.63.159.42:8081/user_recommend/' + owner, (err, response, body) => {
       if (err) { return console.log(err); }
-      var p_body = JSON.parse(body);
-      let arr = [];
-      for (let i = 0; i < p_body.items.length; ++i) {
-        if (p_body.items[i].meta != undefined && p_body.items[i].meta.content != undefined) {
-          if (p_body.items[i].meta.content[0] != undefined) {
-            arr.push(p_body.items[i].meta.content[0].url);
-            let id = p_body.items[i].id;
-            let idx = 0;
-            while (id[idx] != ':') {
-              ++idx;
-            }
+      var p_body = JSON.parse(body.replace('NaN', "null"));
+      for (let i = 0; i < p_body.length; ++i) {
+        for (let j = 0; j < p_body[i].nft.length; ++j) {
+          lst.push(p_body[i].nft[j].url);
+          let id = p_body[i].nft[j].id;
+          let idx = 0;
+          while (id[idx] != ':') {
             ++idx;
-            id = id.slice(idx);
-            id_arr.push(id);
           }
+          id = id.slice(idx + 1);
+          id_arr.push(id);
         }
       }
-      resolve(arr);
+      resolve();
     });
   });
-  lst = await promise_info;
+  vvv = await api_req;
   res.render('index', {need_print: true, list_url: lst, list_id: id_arr});
 }
 

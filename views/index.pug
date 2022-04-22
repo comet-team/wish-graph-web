@@ -22,6 +22,10 @@ html(lang='ru')
       if need_print == true
         .title_block
           h1.title_block_text Recommended NFT:
-        .main_nft_block
-          each url, index in list_url
-            button.nft_img(onclick="location.href = 'https://rarible.com/token/" + list_id[index] + "';" style="background-image:url('" + url + "')")
+        if list_url.length == 0
+          .main_nft_block
+            img.nonft(src="./images/nonfts.jpg", width="500", height="500")
+        else 
+          .main_nft_block
+            each url, index in list_url
+              button.nft_img(onclick="location.href = 'https://rarible.com/token/" + list_id[index] + "';" style="background-image:url('" + url + "')")
