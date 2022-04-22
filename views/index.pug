@@ -24,5 +24,4 @@ html(lang='ru')
           h1.title_block_text Recommended NFT:
         .main_nft_block
           each url in list_url
-            .nft
-              img(src=url height='295' width='295')
+            button.nft_img(style="background-image:url('" + url + "')")
