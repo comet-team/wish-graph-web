@@ -16,7 +16,6 @@ async function drawPage(req, res) {
       var p_body = JSON.parse(body.replace('NaN', "null"));
       for (let i = 0; i < p_body.length; ++i) {
         for (let j = 0; j < p_body[i].nft.length; ++j) {
-          console.log(p_body);
           lst.push(p_body[i].nft[j].url);
           let id = p_body[i].nft[j].id;
           let idx = 0;
