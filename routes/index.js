@@ -1,5 +1,6 @@
 var express = require('express');
 var request = require('request')
+const Web3 = require('web3');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
@@ -11,6 +12,10 @@ async function drawPage(req, res) {
   var lst = [];
   var id_arr = [];
   let api_req = new Promise((resolve, reject) => {
+    let is_valid = Web3.utils.isAddress(owner);
+    if (!is_valid) {
+      resolve();
+    }
     request('http://5.63.159.42:8081/user_recommend/' + owner, (err, response, body) => {
       if (err) { return console.log(err); }
       var p_body = JSON.parse(body.replace('NaN', "null"));
