@@ -11,9 +11,6 @@ async function drawPage(req, res) {
   var lst = [];
   var id_arr = [];
   let api_req = new Promise((resolve, reject) => {
-    if (owner.length <= 20) {
-      resolve();
-    }
     request('http://5.63.159.42:8081/user_recommend/' + owner, (err, response, body) => {
       if (err) { return console.log(err); }
       var p_body = JSON.parse(body.replace('NaN', "null"));
