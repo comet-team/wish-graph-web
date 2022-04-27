@@ -118,3 +118,8 @@ header {
   transform: scale(1.3, 1.3);
   cursor: pointer;
 }
+
+.sgmcnt {
+  height: 1200px;
+  width: 100%;
+}

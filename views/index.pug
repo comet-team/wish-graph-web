@@ -6,13 +6,13 @@ html(lang='ru')
     link(rel='stylesheet' href='./stylesheets/style.css')
     link(rel="shortcut icon" href="/images/icon.jpg" type="image/jpg")
   body
-    header
+    //- header
       .header_main
         .header_left_edge
         .header_name
           h2.header_name_text WishGraph
         .header_right_edge
-    .main
+    //- .main
       .title_block
         h1.title_block_text Enter blockchain address:
       .input_block
@@ -29,3 +29,6 @@ html(lang='ru')
           .main_nft_block
             each url, index in list_url
               button.nft_img(onclick="location.href = 'https://rarible.com/token/" + list_id[index] + "';" style="background-image:url('" + url + "')")
+    //
+  #sigma-container.sgmcnt
+  script(src="./javascripts/bundle.js")
