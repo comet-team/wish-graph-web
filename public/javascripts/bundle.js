@@ -6738,7 +6738,7 @@ var graph = new graphology_1();
 let now = 1;
 let counter = 0;
 let list = [];
-for (let i = 0; i < 5; ++i) {
+for (let i = 0; i < document.currentScript.getAttribute('height'); ++i) {
 	list.push([]);
 	let prev = 0;
 	for (let j = 0; j < now; ++j) {
@@ -6767,6 +6767,6 @@ forceAtlas2.assign(graph, {
 var renderer = new sigma_1.default(graph, container);
 
 renderer.on('clickNode', function(e) {
-  console.log(e.type, e.data.node.label, e.data.captor);
+  window.location.replace("./user?id=" + e.node.toString());
 });
 },{"graphology":11,"graphology-layout-forceatlas2":5,"graphology-layout/circular":7,"sigma":18}]},{},[47]);

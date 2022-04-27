@@ -3,8 +3,7 @@ var request = require('request')
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-  abc = [1, 2, 3];
-  res.render('index', {need_print: false, list_url: [], list_id: [], aaa: "'" + abc.toString() + "'"});
+  res.render('index', {need_print: false, list_url: [], list_id: []});
 });
 
 async function drawPage(req, res) {
@@ -31,7 +30,7 @@ async function drawPage(req, res) {
     });
   });
   vvv = await api_req;
-  res.render('index', {need_print: true, list_url: lst, list_id: id_arr, aaa: []});
+  res.render('index', {need_print: true, list_url: lst, list_id: id_arr});
 }
 
 router.post('/', function(req, res, next) {
