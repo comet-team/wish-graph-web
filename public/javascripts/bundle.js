@@ -6757,14 +6757,6 @@ for (let i = 0; i < 5; ++i) {
 	now *= 2;
 }
 
-const positions = forceAtlas2(graph, {
-  iterations: 50,
-  settings: {
-    gravity: 10
-  }
-});
-
-// To directly assign the positions to the nodes:
 forceAtlas2.assign(graph, {
   iterations: 50,
   settings: {
@@ -6773,4 +6765,8 @@ forceAtlas2.assign(graph, {
 });
 
 var renderer = new sigma_1.default(graph, container);
+
+renderer.on('clickNode', function(e) {
+  console.log(e.type, e.data.node.label, e.data.captor);
+});
 },{"graphology":11,"graphology-layout-forceatlas2":5,"graphology-layout/circular":7,"sigma":18}]},{},[47]);
