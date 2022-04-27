@@ -106,26 +106,6 @@ header {
   cursor: pointer;
 }
 
-.graph_button {
-  width: 50%;
-  height: 60px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 3px solid #FEDA03;
-  border-radius: 8px;
-  color: white;
-  text-shadow: 2px 2px 7px rgba(150, 150, 150, 1);
-  font-size: 30px;
-  background-color: #FEDA03;
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  transition: all 500ms ease; 
-}
-
-.graph_button:hover {
-  background-color: white;
-  cursor: pointer;
-}
-
 .main_nft_block {
   display: flex;
   flex-wrap: wrap;
