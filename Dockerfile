@@ -6,7 +6,7 @@ COPY package*.json ./
 
 RUN npm install
 
-RUN browserify  ./public/javascripts/graph.js -o ./public/javascripts/bundle.js
+CMD browserify  ./public/javascripts/graph.js -o ./public/javascripts/bundle.js
 
 COPY . .
 
