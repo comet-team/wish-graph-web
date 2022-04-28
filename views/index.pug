@@ -35,6 +35,7 @@ html(lang='ru')
                 h3.nft_name #{list_names[index]}
       script.
         function getValue(){
-          var text = document.getElementsByClassName("main_form_field").value;
+          var text = document.getElementById("POST-name").value;
+          console.log(text);
           window.location.replace("./graph?" + text);
         }
