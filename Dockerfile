@@ -6,8 +6,6 @@ COPY package*.json ./
 
 RUN npm install
 
-CMD browserify  ./public/javascripts/graph.js -o ./public/javascripts/bundle.js
-
 COPY . .
 
 EXPOSE 3000
