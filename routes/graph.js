@@ -8,7 +8,7 @@ async function drawPage(req, res) {
   let g_to = [];
   let bd;
   let api_req = new Promise((resolve, reject) => {
-    request('http://localhost:8080/v0.1/graph?walletToken=ETHEREUM:' + owner, (err, response, body) => {
+    request('http://185.46.8.253:8080/v0.1/graph?walletToken=ETHEREUM:' + owner, (err, response, body) => {
       if (err) { return console.log(err); }
       bd = body;
       resolve();

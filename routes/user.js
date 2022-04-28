@@ -8,7 +8,7 @@ async function drawPage(req, res) {
   var id_arr = [];
   var names_arr = [];
   let api_req = new Promise((resolve, reject) => {
-    request('http://localhost:8080/v0.1/user-items?walletToken=' + owner, (err, response, body) => {
+    request('http://185.46.8.253:8080/v0.1/user-items?walletToken=' + owner, (err, response, body) => {
       if (err) { return console.log(err); }
       var p_body = JSON.parse(body);
       for (let i = 0; i < p_body.length; ++i) {
