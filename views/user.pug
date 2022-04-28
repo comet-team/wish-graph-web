@@ -14,6 +14,9 @@ html(lang='ru')
         .header_right_edge
     .main
       .title_block
-        h1.title_block_text Здесь будут рекомендации по #{id}
-      if id == "user0"
-        img(src="./images/pig.gif" height="500" width="500")
+        h1.title_block_text NFTs:
+      .main_nft_block
+        each url, index in list_url
+          .nft
+            button.nft_img(onclick="location.href = 'https://rarible.com/token/" + list_id[index] + "';" style="background-image:url('" + url + "')")
+            h3.nft_name #{list_names[index]}

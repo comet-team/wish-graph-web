@@ -10,24 +10,49 @@ var graph = new graphology_1();
 let now = 1;
 let counter = 0;
 let list = [];
-for (let i = 0; i < document.currentScript.getAttribute('height'); ++i) {
-	list.push([]);
-	let prev = 0;
-	for (let j = 0; j < now; ++j) {
-		//graph.addNode("user" + counter.toString(), { x: -10 + 20 / (now + 1) * (j + 1), y: 0 - i * 2, size: 10, label: "user" + counter.toString(), color: "blue" });
-		graph.addNode("user" + counter.toString(), { x: Math.random() * 100, y: Math.random() * 100, size: 10, label: "user" + counter.toString(), color: "blue" });
-		list[i].push("user" + counter.toString());
-		++counter;
-		if (j != 0 && j % 2 == 0) {
-			++prev;
-		}
-		if (i != 0) {
-			--counter;
-			graph.addEdge(list[i - 1][prev], "user" + counter.toString(), {size: 5});
-			++counter;
+let body = document.currentScript.getAttribute('body');
+let g = [];
+let types = new Map();
+var p_body = JSON.parse(body);
+for (let i = 0; i < p_body.length; ++i) {
+	g.push({from: p_body[i].source, to: p_body[i].target});
+	let st, tt;
+	if (p_body.type == 0) {
+		st = "gray";
+		tt = "blue";
+	} else {
+		st = "blue";
+		tt = "gray";
+	}
+	types.set(p_body[i].source, st);
+	types.set(p_body[i].target, tt);
+}
+let vertexes = [];
+for (let i = 0; i < g.length; ++i) {
+	vertexes.push(g[i].from);
+	vertexes.push(g[i].to);
+}
+
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
+vertexes = vertexes.filter(onlyUnique);
+for (let i = 0; i < vertexes.length; ++i) {
+	graph.addNode(vertexes[i], { x: Math.random() * 100, y: Math.random() * 100, size: 10, label: vertexes[i], color: types.get(vertexes[i]) });
+}
+for (let i = 0; i < g.length; ++i) {
+	let need_print = true;
+	for (let j = 0; j < i; ++j) {
+		if ((g[i].from == g[j].from && g[i].to == g[j].to) || (g[i].from == g[j].to && g[i].to == g[j].from)) {
+			need_print = false;
+			break;
 		}
 	}
-	now *= 2;
+	if (!need_print) {
+		continue;
+	}
+	graph.addEdge(g[i].from, g[i].to, {size: 5});
 }
 
 const layout = new ForceSupervisor(graph, { isNodeFixed: (_, attr) => attr.highlighted });
