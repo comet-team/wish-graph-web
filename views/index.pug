@@ -14,7 +14,7 @@ html(lang='ru')
         .header_right_edge
     .main
       .title_block
-        h1.title_block_text Enter blockchain address:
+        h1.title_block_text Enter Ethereum address:
       .input_block
         form.main_form(action='' method='post')
           input#POST-name.main_form_field(type='text' name='owner')
@@ -30,4 +30,6 @@ html(lang='ru')
         else 
           .main_nft_block
             each url, index in list_url
-              button.nft_img(onclick="location.href = 'https://rarible.com/token/" + list_id[index] + "';" style="background-image:url('" + url + "')")
+              .nft
+                button.nft_img(onclick="location.href = 'https://rarible.com/token/" + list_id[index] + "';" style="background-image:url('" + url + "')")
+                h3.nft_name #{list_names[index]}
